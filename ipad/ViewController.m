@@ -13,6 +13,8 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "NetRequest.h"
 
+#import "NetReachability.h"
+
 @interface ViewController ()
 
 @property(nonatomic,strong) UITextField *nametx;
@@ -28,6 +30,8 @@ static NSString *stuID;
 {
     block(stuID);
 }
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -38,6 +42,11 @@ static NSString *stuID;
     backimage.userInteractionEnabled=YES;
     [self.view addSubview:backimage];
     
+    
+    
+  
+    [NetReachability   NetWatching];
+
     
     
     UITextField *inputview = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
@@ -137,78 +146,71 @@ static NSString *stuID;
     code=i%10*100000+i/10+44444;
     NSMutableString *codestr=[self md5: [NSString stringWithFormat:@"%06d",code]] ;
     
+    
+    if ([codetx.text length]<6) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密码格式有误" message:@"请重新输入密码" preferredStyle:  UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //点击按钮的响应事件；
+        }]];
+        
+        //弹出提示框；
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    
   
 //    NSLog(@"%@",codestr);
- static   BOOL flag;
+   static   BOOL flag;
     //  [codestr appendString:@"fa"];
    codestr = (NSMutableString *)[codestr substringToIndex:[codestr length] - 2];
-    NSLog(@"%@",[codestr substringToIndex:[codestr length] - 2]);
+    
     
     [SVProgressHUD show];
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
-    [NetRequest LoginRequestID:nametx.text PassWorsd:codestr Block:^(NSMutableArray *blockarry)
-     {
-         flag=[blockarry[0] integerValue];
-         
-         [SVProgressHUD dismiss];
-         if (!flag){
-             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密码错误" message:@"点击重新输入" preferredStyle:  UIAlertControllerStyleAlert];
-             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                 //点击按钮的响应事件；
-             }]];
-             
-             //弹出提示框；
-             [self presentViewController:alert animated:true completion:nil];
-             
-         }
-         else
-         {
-             stuID=nametx.text;
-             MainViewController *main=[[MainViewController alloc]init];
-             [self presentViewController:main animated:YES completion:nil];
-         }
-
-         
-         
-        
-         
-     }];
     
-    
-    
- /*   for(i=0;i<self.arry.count;i++)
-        
-    
+    if(![NetReachability isExistenceNetwork])
     {
-        NSArray *aryy=self.arry[i];
+        [SVProgressHUD dismiss];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络连接错误" message:nil preferredStyle:  UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //点击按钮的响应事件；
+        }]];
         
-        
-        if ( [  [NSString stringWithFormat:@" %@", nametx.text]  isEqualToString:[NSString stringWithFormat:@" %@", aryy[0]]])
-        {
-        
-            NSMutableString *Mutstr=[NSMutableString stringWithFormat:@"%@",aryy[5]];
-           
-            ;
-            if (Mutstr.length<=codestr.length) {
-                [Mutstr appendString:@"fa"];
-            }
-            else
-            {
-                [codestr appendString:@"fa"];
-            }
-            
-          if ([codestr isEqual: Mutstr]) {
-                
-                flag=YES;
-
-                MainViewController *main=[[MainViewController alloc]init];
-                [self presentViewController:main animated:YES completion:nil];
-                               break;
-            }
-        }
-        
-       
-    }       */
+        //弹出提示框；
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    else
+    {
+       [NetRequest LoginRequestID:nametx.text PassWorsd:codestr Block:^(NSMutableArray *blockarry)
+          {
+             flag=[blockarry[0] integerValue];
+             
+             [SVProgressHUD dismiss];
+             if (!flag){
+                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密码错误" message:@"点击重新输入" preferredStyle:  UIAlertControllerStyleAlert];
+                 [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                     //点击按钮的响应事件；
+                 }]];
+                 
+                 //弹出提示框；
+                 [self presentViewController:alert animated:true completion:nil];
+                 
+             }
+             else
+             {
+                 stuID=nametx.text;
+                 MainViewController *main=[[MainViewController alloc]init];
+                 [self presentViewController:main animated:YES completion:nil];
+             }
+           }];
+   
+    
+    }
+    
+    
+    
+    
+    
+    
     
     
     

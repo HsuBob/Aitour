@@ -10,7 +10,7 @@
 #import "UMSocial.h"
 #import "UMSocialSinaHandler.h"
 #import "UMSocialQQHandler.h"
-#import "NetRequest.h"
+#import "NetReachability.h"
 @interface AppDelegate ()
 
 @end

@@ -51,6 +51,8 @@
 		0FE926911DAC7F7A00C992E4 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE926891DAC7F7A00C992E4 /* AFURLRequestSerialization.m */; };
 		0FE926921DAC7F7A00C992E4 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9268B1DAC7F7A00C992E4 /* AFURLResponseSerialization.m */; };
 		0FE926931DAC7F7A00C992E4 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9268D1DAC7F7A00C992E4 /* AFURLSessionManager.m */; };
+		0FE995A21DD1AC93006C8CE5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE995A11DD1AC93006C8CE5 /* Reachability.m */; };
+		0FE995A51DD1B4EB006C8CE5 /* NetReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE995A41DD1B4EB006C8CE5 /* NetReachability.m */; };
 		0FF373DC1DAC8D05006A255E /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF373DB1DAC8D05006A255E /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0FF373DE1DAC9110006A255E /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF373DD1DAC910F006A255E /* libxml2.2.tbd */; };
 		0FF8A47A1DB07B150059F438 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF8A4791DB07B150059F438 /* QuartzCore.framework */; };
@@ -160,6 +162,10 @@
 		0FE9268B1DAC7F7A00C992E4 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		0FE9268C1DAC7F7A00C992E4 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		0FE9268D1DAC7F7A00C992E4 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		0FE995A01DD1AC93006C8CE5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0FE995A11DD1AC93006C8CE5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0FE995A31DD1B4EB006C8CE5 /* NetReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetReachability.h; path = ../NetReachability.h; sourceTree = "<group>"; };
+		0FE995A41DD1B4EB006C8CE5 /* NetReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetReachability.m; path = ../NetReachability.m; sourceTree = "<group>"; };
 		0FF373DA1DAC8D05006A255E /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		0FF373DB1DAC8D05006A255E /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		0FF373DD1DAC910F006A255E /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
@@ -226,6 +232,7 @@
 		0F08E2F31DACD07600DCEF46 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				0FE9959F1DD1AC93006C8CE5 /* Reachability */,
 				0FD0A16B1D58254700048D5A /* Framework */,
 				0FD0A16A1D58253700048D5A /* Um */,
 				0F08E2EC1DACD06A00DCEF46 /* SVProgressHUD */,
@@ -247,6 +254,8 @@
 		0F72A4221DB6F792004C13AD /* NetRequest */ = {
 			isa = PBXGroup;
 			children = (
+				0FE995A31DD1B4EB006C8CE5 /* NetReachability.h */,
+				0FE995A41DD1B4EB006C8CE5 /* NetReachability.m */,
 				0FFDC8481DAB5B68004F32FE /* NetRequest.h */,
 				0FFDC8491DAB5B68004F32FE /* NetRequest.m */,
 			);
@@ -465,6 +474,15 @@
 			name = AFNetworking;
 			sourceTree = "<group>";
 		};
+		0FE9959F1DD1AC93006C8CE5 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				0FE995A01DD1AC93006C8CE5 /* Reachability.h */,
+				0FE995A11DD1AC93006C8CE5 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		0FF373D91DAC8D05006A255E /* GDataXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,7 +559,7 @@
 				TargetAttributes = {
 					0FB28C371D54204300F7EAAA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = LQW596V76D;
+						DevelopmentTeam = 3R6BJ4ZT57;
 					};
 					0FB28C501D54204400F7EAAA = {
 						CreatedOnToolsVersion = 7.3;
@@ -634,8 +652,10 @@
 				0F4AB1071D586D0A00150486 /* MainViewController.m in Sources */,
 				0FE926931DAC7F7A00C992E4 /* AFURLSessionManager.m in Sources */,
 				0F08E2F21DACD06A00DCEF46 /* SVProgressHUD.m in Sources */,
+				0FE995A21DD1AC93006C8CE5 /* Reachability.m in Sources */,
 				0F4AB10D1D5886F500150486 /* RankViewController.m in Sources */,
 				0FB28C3D1D54204300F7EAAA /* main.m in Sources */,
+				0FE995A51DD1B4EB006C8CE5 /* NetReachability.m in Sources */,
 				0FE9268E1DAC7F7A00C992E4 /* AFHTTPSessionManager.m in Sources */,
 				0FE926921DAC7F7A00C992E4 /* AFURLResponseSerialization.m in Sources */,
 				0F4AB1101D5889B600150486 /* PersonlViewController.m in Sources */,
@@ -814,7 +834,7 @@
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = xb.ipad;
+				PRODUCT_BUNDLE_IDENTIFIER = xbo.ipad;
 				PRODUCT_NAME = AiTour;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -844,7 +864,7 @@
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = xb.ipad;
+				PRODUCT_BUNDLE_IDENTIFIER = xbo.ipad;
 				PRODUCT_NAME = AiTour;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;

@@ -17,4 +17,5 @@ typedef void (^ModelBlock)(NSMutableArray *arry);
 +(void)BlindQQRequestID:(NSString *)Id PassWord:(NSString *)password OpenId:(NSString *)openid Block:(ModelBlock)block;
 +(void)ThirdLoginWeiboRequestOpenID:(NSString *)openid Block:(ModelBlock)block;
 +(void)BlindWeiboRequestID:(NSString *)Id PassWord:(NSString *)password OpenId:(NSString *)openid Block:(ModelBlock)block;
++(BOOL)AFNetworkingReality;
 @end

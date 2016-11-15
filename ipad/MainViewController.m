@@ -62,7 +62,7 @@
 -(void)personlist
 {
     PersonlViewController *personVc=[[PersonlViewController alloc]init];
-    NSLog(@"   ))_____ %@",_stuID);
+
     [personVc setStuID:_stuID];
     
     [self presentViewController:personVc animated:YES completion:nil];
@@ -83,9 +83,24 @@
 
 -(void)back
 {
-    ViewController *vc=[ViewController new];
     
-    [self presentViewController:vc animated:YES completion:nil];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:  UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+              //点击按钮的响应事件；
+    }]];
+
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        ViewController *vc=[ViewController new];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        //点击按钮的响应事件；
+    }]];
+    
+    //弹出提示框；
+    [self presentViewController:alert animated:true completion:nil];
+   
 }
 
 @end
